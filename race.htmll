@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RACE Stroke Scale Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #0077b6;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #023e8a;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0077b6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #005f99;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e0f7fa;
+            color: #00796b;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>RACE Stroke Scale Calculator</h1>
+        <form id="raceForm">
+            <div class="question">
+                <label for="facialPalsy">Facial Palsy:</label>
+                <select id="facialPalsy" required>
+                    <option value="0">0 - Normal</option>
+                    <option value="1">1 - Mild asymmetry</option>
+                    <option value="2">2 - Complete asymmetry</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="armMotor">Arm Motor Function:</label>
+                <select id="armMotor" required>
+                    <option value="0">0 - Normal</option>
+                    <option value="1">1 - Mild weakness</option>
+                    <option value="2">2 - No movement</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="legMotor">Leg Motor Function:</label>
+                <select id="legMotor" required>
+                    <option value="0">0 - Normal</option>
+                    <option value="1">1 - Mild weakness</option>
+                    <option value="2">2 - No movement</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="headGaze">Head and Gaze Deviation:</label>
+                <select id="headGaze" required>
+                    <option value="0">0 - Normal</option>
+                    <option value="1">1 - Deviation</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="aphasiaAgnosia">Aphasia/Agnosia:</label>
+                <select id="aphasiaAgnosia" required>
+                    <option value="0">0 - None</option>
+                    <option value="1">1 - Mild</option>
+                    <option value="2">2 - Severe</option>
+                </select>
+            </div>
+            <button type="button" onclick="calculateScore()">Calculate RACE Score</button>
+        </form>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateScore() {
+            const facialPalsy = parseInt(document.getElementById('facialPalsy').value);
+            const armMotor = parseInt(document.getElementById('armMotor').value);
+            const legMotor = parseInt(document.getElementById('legMotor').value);
+            const headGaze = parseInt(document.getElementById('headGaze').value);
+            const aphasiaAgnosia = parseInt(document.getElementById('aphasiaAgnosia').value);
+
+            const totalScore = facialPalsy + armMotor + legMotor + headGaze + aphasiaAgnosia;
+
+            document.getElementById('result').textContent = `Total RACE Score: ${totalScore}`;
+        }
+    </script>
+</body>
+</html>
